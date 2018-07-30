@@ -104,6 +104,9 @@ class App extends Component {
           gameState={ this.state.gameState } 
           keepGoing={ this.state.buttonClick }
           newTile={ this.state.newTile } />
+      <div className="instructions">
+        <span><p className="fat">HOW TO PLAY:</p> Use your <p className="fat">arrow keys</p> to move the tiles. When two tiles with the same number touch, they <p className="fat">merge into one!</p></span>
+      </div>
       </div>
     );
   }
