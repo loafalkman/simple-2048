@@ -54,16 +54,15 @@ class App extends Component {
   }
 
   onKeyPressed(e) {
-    e.preventDefault();
-    let game = this.state.game;
     let code = e.keyCode;
 
     if (code === 37 || code === 38 || code === 39 || code === 40) {
+      let game = this.state.game;
       e.preventDefault();
       let json = game.getSquares(code);
 
       this.setState({
-        newTile: json.newIndex, //
+        newTile: json.newIndex,
         squares: json.squares,
         score: this.state.score + json.score,
         gameState: json.gameState,
@@ -85,28 +84,26 @@ class App extends Component {
       <div className="app">
         <div className="app-header">
           <h1>2048</h1>
-
           <div className="board">
             <div className="score">
               <span id="caption">SCORE</span>
               <span id="content">{ this.state.score }</span>
             </div>
-
             <button onClick={ this.restartGame }>
               New Game
             </button>
           </div>
         </div>
-
         <FrameSelector 
           squares={ this.state.squares } 
           onKeyDown={ this.onKeyPressed }
           gameState={ this.state.gameState } 
           keepGoing={ this.state.buttonClick }
-          newTile={ this.state.newTile } />
-      <div className="instructions">
-        <span><p className="fat">HOW TO PLAY:</p> Use your <p className="fat">arrow keys</p> to move the tiles. When two tiles with the same number touch, they <p className="fat">merge into one!</p></span>
-      </div>
+          newTile={ this.state.newTile } 
+        />
+        <div className="instructions">
+          <span><p className="fat">HOW TO PLAY:</p> Use your <p className="fat">arrow keys</p> to move the tiles. When two tiles with the same number touch, they <p className="fat">merge into one!</p></span>
+        </div>
       </div>
     );
   }
